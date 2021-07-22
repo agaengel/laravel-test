@@ -1,0 +1,8 @@
+php8.0 artisan migrate
+php8.0 artisan cache:clear
+php8.0 artisan config:clear
+php8.0 artisan route:clear
+php8.0 artisan view:clear
+php8.0 artisan config:cache
+php8.0 artisan route:cache
+php8.0 artisan view:cache

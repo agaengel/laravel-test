@@ -41,7 +41,6 @@ build:
     chmod -R 777 storage/framework;
     chmod -R 777 storage/logs;
     php artisan key:generate --force;
-    touch database/database.sqlite;
     npm ci;
     npm run prod;
     php artisan migrate --force;

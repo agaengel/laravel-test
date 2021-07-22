@@ -1,6 +1,8 @@
-<?php
+ <?php
 
-use Illuminate\Support\Facades\Route;
+ use App\Http\Controllers\MailSender;
+ use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [Dashboard::class, 'index'] )->middleware(['auth'])->name('dashboard');
+
+Route::get('mail', [MailSender::class, 'index'])->middleware(['auth'])->name('mail');
 
 require __DIR__.'/auth.php';
