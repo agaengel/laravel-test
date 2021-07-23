@@ -1,4 +1,4 @@
-php8.0 artisan migrate
+php8.0 artisan migrate --force
 php8.0 artisan cache:clear
 php8.0 artisan config:clear
 php8.0 artisan route:clear
