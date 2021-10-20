@@ -8,36 +8,36 @@ setup:
     properties:
       node-version: 14.x
   - name: Make envfile
-    action: SpicyPizza/create-envfile@v1
+    action: fmunirdev/envvar-to-dotenv-action@v0.2.0
     properties:
-      envkey_APP_NAME: Laravel
-      envkey_APP_ENV: local
-      envkey_APP_KEY: dummy
-      envkey_APP_DEBUG: true
-      envkey_APP_URL: ${{ steps.project.outputs.site-url }}
-      envkey_LOG_CHANNEL: stack
-      envkey_LOG_LEVEL: debug
-      envkey_DB_CONNECTION: sqlite
-      envkey_BROADCAST_DRIVER: log
-      envkey_CACHE_DRIVER: file
-      envkey_FILESYSTEM_DRIVER: local
-      envkey_QUEUE_CONNECTION: sync
-      envkey_SESSION_DRIVER: file
-      envkey_SESSION_LIFETIME: 120
-      envkey_MAIL_MAILER: smtp
-      envkey_MAIL_HOST: ${{ secrets.MAIL_HOST }}
-      envkey_MAIL_PORT: ${{ secrets.MAIL_PORT }}
-      envkey_MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-      envkey_MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
-      envkey_MAIL_ENCRYPTION: ${{ secrets.MAIL_ENCRYPTION }}
-      envkey_MAIL_FROM_ADDRESS: ${{ secrets.MAIL_FROM_ADDRESS }}
-      envkey_MAIL_FROM_NAME: "${APP_NAME}"
-      directory: ./
-      file_name: .env
+      APP_NAME: Laravel
+      APP_ENV: local
+      APP_KEY: dummy
+      APP_DEBUG: true
+      APP_URL: ${{ steps.project.outputs.site-url }}
+      LOG_CHANNEL: stack
+      LOG_LEVEL: debug
+      DB_CONNECTION: sqlite
+      BROADCAST_DRIVER: log
+      CACHE_DRIVER: file
+      FILESYSTEM_DRIVER: local
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: file
+      SESSION_LIFETIME: 120
+      MAIL_MAILER: smtp
+      MAIL_HOST: ${{ secrets.MAIL_HOST }}
+      MAIL_PORT: ${{ secrets.MAIL_PORT }}
+      MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+      MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+      MAIL_ENCRYPTION: ${{ secrets.MAIL_ENCRYPTION }}
+      MAIL_FROM_ADDRESS: ${{ secrets.MAIL_FROM_ADDRESS }}
+      MAIL_FROM_NAME: "${APP_NAME}"
+    environment:
+      variableNames: APP_NAME,APP_ENV,APP_KEY,APP_DEBUG,APP_URL,LOG_CHANNEL,LOG_LEVEL,DB_CONNECTION,BROADCAST_DRIVER,CACHE_DRIVER,FILESYSTEM_DRIVER,QUEUE_CONNECTION,SESSION_DRIVER,SESSION_LIFETIME,MAIL_MAILER,MAIL_HOST,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_ENCRYPTION,MAIL_FROM_ADDRESS,MAIL_FROM_NAME
+      target: .env
 build:
   name: Do stuff to deploy to ionos
   command:
-    sudo chown runner:docker .env;
     chmod -R 777 storage/framework;
     chmod -R 777 storage/logs;
     php artisan key:generate --force;
