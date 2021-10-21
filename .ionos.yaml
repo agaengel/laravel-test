@@ -9,7 +9,7 @@ setup:
       node-version: 14.x
   - name: Make envfile
     action: fmunirdev/envvar-to-dotenv-action@v0.2.0
-    env:
+    environment:
       APP_NAME: Laravel
       APP_ENV: local
       APP_KEY: dummy
