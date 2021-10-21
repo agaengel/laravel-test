@@ -9,7 +9,7 @@ setup:
       node-version: 14.x
   - name: Make envfile
     action: fmunirdev/envvar-to-dotenv-action@v0.2.0
-    properties:
+    env:
       APP_NAME: Laravel
       APP_ENV: local
       APP_KEY: dummy
@@ -32,7 +32,7 @@ setup:
       MAIL_ENCRYPTION: ${{ secrets.MAIL_ENCRYPTION }}
       MAIL_FROM_ADDRESS: ${{ secrets.MAIL_FROM_ADDRESS }}
       MAIL_FROM_NAME: "${APP_NAME}"
-    environment:
+    properties:
       variableNames: APP_NAME,APP_ENV,APP_KEY,APP_DEBUG,APP_URL,LOG_CHANNEL,LOG_LEVEL,DB_CONNECTION,BROADCAST_DRIVER,CACHE_DRIVER,FILESYSTEM_DRIVER,QUEUE_CONNECTION,SESSION_DRIVER,SESSION_LIFETIME,MAIL_MAILER,MAIL_HOST,MAIL_PORT,MAIL_USERNAME,MAIL_PASSWORD,MAIL_ENCRYPTION,MAIL_FROM_ADDRESS,MAIL_FROM_NAME
       target: .env
 build:
